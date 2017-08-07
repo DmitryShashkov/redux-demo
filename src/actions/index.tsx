@@ -1,8 +1,9 @@
 import {
-    AddToBasketAction, BuyFailureAction, BuyRequestAction, BuySuccessAction, CustomAction, GoodInBasketProps, GoodProps,
-    RemoveFromBasketAction, StoreState
+    AddToBasketAction, BuyFailureAction, BuyRequestAction,
+    BuySuccessAction, CustomAction, GoodInBasketProps,
+    GoodProps, RemoveFromBasketAction, StoreState
 } from '../interfaces';
-import {ActionCreator, Dispatch} from 'react-redux';
+import { ActionCreator } from 'react-redux';
 import { ACTION_TYPES } from '../constants';
 
 export const addToBasket
@@ -57,15 +58,20 @@ export const buyGoods
             let state: StoreState = getState();
 
             let goods: GoodProps[] = goodsInBasket.map (
-                (goodInBasket: GoodInBasketProps) => state.goods.find((item: GoodProps) => item.id === goodInBasket.id)
+                (goodInBasket: GoodInBasketProps) => state.goods.find (
+                    (item: GoodProps) => item.id === goodInBasket.id
+                )
             );
 
-            let paymentSum: number = goods.reduce((prev: number, curr: GoodProps, index: number) => prev + curr.price * goodsInBasket[index].amount, 0);
+            let paymentSum: number = goods.reduce (
+                (prev: number, curr: GoodProps, index: number) =>
+                    prev + curr.price * goodsInBasket[index].amount, 0
+            );
 
             dispatch(buyRequest(goods));
 
             setTimeout(() => {
-                if (state.payment.moneyLeft > paymentSum) {
+                if (state.payment.moneyLeft >= paymentSum) {
                     dispatch(buySuccess(paymentSum));
                     dispatch(clearBasket());
                 } else {

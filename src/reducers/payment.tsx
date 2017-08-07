@@ -1,6 +1,6 @@
-import {BuyFailureAction, BuySuccessAction, CustomAction, PaymentState} from "../interfaces";
-import {Reducer} from "redux";
-import {ACTION_TYPES} from "../constants";
+import { BuyFailureAction, BuySuccessAction, CustomAction, PaymentState } from '../interfaces';
+import { ACTION_TYPES } from '../constants';
+import { Reducer } from 'redux';
 
 const INITIAL_STATE = {
     isInProgress: false,
@@ -32,9 +32,9 @@ function processBuyFailure (newState: PaymentState, action: BuyFailureAction) : 
 
 export const payment
     : Reducer<PaymentState>
-    = (state: PaymentState = INITIAL_STATE, action: CustomAction) : PaymentState => {
+    = (oldState: PaymentState = INITIAL_STATE, action: CustomAction) : PaymentState => {
         // noinspection TypeScriptValidateTypes
-        let newState: PaymentState = { ...state };
+        let newState: PaymentState = { ...oldState };
 
         switch (action.type) {
             case ACTION_TYPES.BUY_REQUEST:

@@ -1,5 +1,5 @@
+import { List } from 'immutable';
 import { Action } from 'redux';
-import {List} from "immutable";
 
 export interface CustomAction extends Action {
     type: number;

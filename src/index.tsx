@@ -1,34 +1,27 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-
-import {rootReducer} from "./reducers/index";
-import {applyMiddleware, createStore} from "redux";
-import {Provider, Store} from "react-redux";
-import {GoodProps} from "./interfaces";
-import {App} from "./components/App";
-import {List} from "immutable";
-
+import { applyMiddleware, createStore } from 'redux';
+import { rootReducer } from './reducers/index';
+import { Provider, Store } from 'react-redux';
+import { StoreState } from './interfaces';
+import { App } from './components/App';
+import { goods } from './data/goods';
+import { List } from 'immutable';
 import thunk from 'redux-thunk';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
 
-const goods: GoodProps[] = [{
-    id: '001',
-    price: 100,
-    description: 'Good #1'
-}, {
-    id: '002',
-    price: 200,
-    description: 'Good #2'
-}, {
-    id: '003',
-    price: 300,
-    description: 'Good #3'
-}];
-
-const store: Store<any> = createStore(rootReducer, { goods: List(goods) }, applyMiddleware(thunk));
+const store: Store<StoreState> = createStore (
+    rootReducer,
+    {
+        goods: List(goods),
+        basket: { goods: [], totalSum: 0 },
+        payment: { isInProgress: false, moneyLeft: 1000, statusMessage: '' }
+    },
+    applyMiddleware(thunk)
+);
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
-    document.getElementById("example")
+    document.getElementById('root')
 );

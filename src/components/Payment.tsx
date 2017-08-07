@@ -1,9 +1,9 @@
-import {
-    GoodInBasketProps, GoodProps, PaymentComponentState, PaymentComponentProps, PaymentState,
-    StoreState
-} from "../interfaces";
-import * as React from "react";
+import { 
+    GoodInBasketProps, PaymentComponentState,
+    PaymentComponentProps, StoreState 
+} from '../interfaces';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
 
 export class Payment extends React.Component<PaymentComponentProps, PaymentComponentState> {
     public static contextTypes: any = {
@@ -14,14 +14,14 @@ export class Payment extends React.Component<PaymentComponentProps, PaymentCompo
 
     public state: PaymentComponentState;
 
-    constructor (props: PaymentComponentProps) {
-        super(props);
+    constructor () {
+        super();
         this.state = {
             shouldDisplayMessage: false
         };
     }
 
-    private buyGoods () {
+    private buyGoods () : void {
         let state: StoreState = this.context.store.getState();
         let goodsInBasket: GoodInBasketProps[] = state.basket.goods;
 

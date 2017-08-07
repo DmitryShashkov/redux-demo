@@ -1,6 +1,6 @@
 import { CustomAction, GoodsState } from '../interfaces';
+import { List } from 'immutable';
 import { Reducer } from 'redux';
-import {List} from "immutable";
 
 export const goods
     : Reducer<GoodsState> 
