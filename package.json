@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node node_modules/webpack/bin/webpack.js",
+    "watch": "node node_modules/webpack/bin/webpack.js --watch",
+    "serve": "node node_modules/http-server/bin/http-server -c-1 -p 4007"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "http-server": "^0.10.0",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
@@ -17,7 +20,8 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "webpack": "^3.5.1"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.71",
