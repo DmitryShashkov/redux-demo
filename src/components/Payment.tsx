@@ -48,10 +48,17 @@ export class Payment extends React.Component<PaymentComponentProps, PaymentCompo
 
     render () {
         return (
-            <div>
-                Money left: { this.props.moneyLeft }
-                <button onClick={this.buyGoods.bind(this)}>Buy!</button>
-                { this.state.shouldDisplayMessage && this.props.statusMessage }
+            <div className="payment">
+                <div className="money-left">
+                    Money left: { this.props.moneyLeft }
+                </div>
+                <button className="buy-button"
+                    onClick={this.buyGoods.bind(this)}>
+                    Buy!
+                </button>
+                <div className="status">
+                    { this.state.shouldDisplayMessage && this.props.statusMessage }
+                </div>
             </div>
         );
     }

@@ -3,8 +3,8 @@ import { Good } from './Good';
 import * as React from 'react';
 
 export const GoodsList: React.StatelessComponent<GoodsListProps> = (props: GoodsListProps) : JSX.Element => (
-    <div>
-        Goods List
+    <div className="goods-list">
+        <div className="title"> Goods List </div>
         { props.goods.map((good: GoodProps, index: number) => (
             <Good
                 key={index}

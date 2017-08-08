@@ -21,8 +21,8 @@ export class Basket extends React.Component<BasketProps> {
 
     public render () : JSX.Element {
         return (
-            <div>
-                Basket
+            <div className="basket">
+                <div className="title"> In basket: </div>
                 { this.props.goods.map((good: GoodInBasketProps, index: number) => (
                     <GoodInBasket
                         key={index}
@@ -30,8 +30,17 @@ export class Basket extends React.Component<BasketProps> {
                         onRemove={() => { this.removeGood(good); }}
                     />
                 ))}
-                Total sum: {this.props.totalSum}
-                <button onClick={this.props.onEmpty}>Empty</button>
+                {
+                    !this.props.goods.length && <div className="no-items">
+                        not a single shmeckle for now...
+                    </div>
+                }
+                <div className="total-sum">
+                    Total sum: {this.props.totalSum}
+                </div>
+                <button className="empty-button" onClick={this.props.onEmpty}>
+                    <i className="fa fa-trash-o" aria-hidden="true" />
+                </button>
             </div>
         )
     }

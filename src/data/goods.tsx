@@ -7,7 +7,7 @@ export const goods: GoodProps[] = [{
 }, {
     id: '002',
     price: 200,
-    description: 'Mr. Meeseeks Box'
+    description: 'Meeseeks Box'
 }, {
     id: '003',
     price: 300,
